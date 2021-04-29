@@ -13,6 +13,10 @@ function App() {
         cary.pop();
         setCary([...cary]);
     }
+    const delElementTwo = () => {
+        cary.shift();
+        setCary([...cary]);
+    }
     return (
         <div>
             {
@@ -28,7 +32,8 @@ function App() {
                     />)
             }
             <br/>
-            <button onClick={delElement}>Delete next element</button><br/><br/>
+            <button className={'delLastElem'} onClick={delElement}>Видалити останній елемент</button>
+            <button className={'delLastElem'} onClick={delElementTwo}>Видалити перший елемент</button><br/><br/>
             <PlusMinus/>
 
         </div>
