@@ -20,7 +20,7 @@ export default function PlusMinus() {
             <button className={'butt'} onClick={minus}>Minus</button>
             <button className={'butt'} onClick={plus}>Plus</button>
             <button className={'butt'} onClick={res}>Reset</button>
-            <h4>Now number is {number}</h4>
+            <h4>***Now number is {number}***</h4>
         </div>
     );
 }
