@@ -1,25 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import Cars from "./components/User/Car.main";
+import {car} from './components/CarCarry/allCars';
+import {useState} from 'react'
+import PlusMinus from "./components/IncrementDecrementReset/plusMinusReset";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    let [cary, setCary] = useState(car);
+    const delCarry = (id) => {
+        setCary(cary.filter(value => value.id !== id))
+    }
+    const delElement = () => {
+        cary.pop();
+        setCary([...cary]);
+    }
+    return (
+        <div>
+            {
+                cary.map((carry, index) =>
+                    <Cars
+                        key={index}
+                        producer={carry.producer}
+                        model={carry.model}
+                        year={carry.year}
+                        color={carry.color}
+                        id={carry.id}
+                        delCarry={delCarry}
+                    />)
+            }
+            <br/>
+            <button onClick={delElement}>Delete next element</button><br/><br/>
+            <PlusMinus/>
+
+        </div>
+    );
 }
 
 export default App;
