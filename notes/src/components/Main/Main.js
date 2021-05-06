@@ -7,8 +7,9 @@ export default function Main() {
     let [surname, setSurname] = useState('');
     let [age, setAge] = useState('');
     let [city, setCity] = useState('');
+    let [phone, setPhone] = useState('');
     let [userInfo, setUserInfo] = useState([]);
-    let [userDetail, setUserDetail] = useState('');
+    let [userDetail, setUserDetail] = useState(null);
     let [item, setItem] = useState(JSON.parse(localStorage.getItem('item')));
 
     useEffect(() => {
@@ -16,7 +17,7 @@ export default function Main() {
     })
     const addInfo = (ev) => {
         ev.preventDefault();
-        setUserInfo([...userInfo, {name, surname, age, city}])
+        setUserInfo([...userInfo, {name, surname, age, city, phone}])
         console.log(userInfo)
     }
     const nameAdd = (ev) => {
@@ -31,12 +32,16 @@ export default function Main() {
     const cityAdd = (ev) => {
         setCity(city = ev.target.value)
     }
+    const phoneAdd = (ev) => {
+        setPhone(phone = ev.target.value)
+    }
 
     const details = (name) => {
-        let findUser = userDetail.find(value => value.name === name);
+        let findUser = userInfo.find(value => value.name === name);
         console.log(findUser);
         setUserDetail(findUser);
     }
+
 
     return (
         <div className={'mainContainer'}>
@@ -54,27 +59,29 @@ export default function Main() {
                     <input onChange={cityAdd} className={'inputContainer'} type="text"
                            placeholder={'City'}
                     />
+                    <input onChange={phoneAdd} className={'inputContainer'} type="text"
+                           placeholder={'Phone (+380)'}
+                    />
                 </form>
                 <button onClick={addInfo} className={'addInput'}>Add</button>
             </div>
 
             <div className={'infoForm'}>
                 {
-                    userDetail ? (<h4>
-                        name : {userDetail.name} <br/>
-                        surname : {userDetail.surname}<br/>
-                        age : {userDetail.age}<br/>
-                        city : {userDetail.city}
-                    </h4>) : (<h5>User is not defined</h5>)
+                    userDetail ? (<h4>name : {userDetail.name} <br/> surname : {userDetail.surname}<br/>
+                            age : {userDetail.age}<br/> city : {userDetail.city}<br/> phone: {userDetail.phone}</h4>)
+                        : (<span> </span>)
                 }
+                <button id={'btn'}>Close Information</button>
 
             </div>
 
             <div className={'infoUser'}>
                 {
-                    userInfo.map(value =>
+                    userInfo.map((value, index) =>
                         <User
-                            details = {details}
+                            key={index}
+                            details={details}
                             {...value}
                         />
                     )

@@ -1,10 +1,11 @@
 export default function User(props) {
-    let {name, surname, age, city,details} = props
+    let {name, surname, age, city, phone, details} = props
     return (
-        <div >
+        <div>
             <h2>{name}</h2>
-            <p> {surname} - {age} - {city}</p>
+            <p>{phone}</p>
             <button onClick={() => details(name)}>details</button>
+            <button>Edit</button>
         </div>
     )
 
