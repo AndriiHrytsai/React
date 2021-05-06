@@ -1,0 +1,31 @@
+.mainContainer {
+    margin-top: 30px;
+    display: flex;
+}
+
+.formForm {
+    width: 33%;
+}
+
+.infoForm {
+    width: 33%;
+}
+
+.infoUser {
+    width: 34%;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputContainer {
+    height: 50px;
+    border-radius: 10px;
+}
+
+.addInput {
+    width: 100px;
+    border-radius: 10px;
+}
