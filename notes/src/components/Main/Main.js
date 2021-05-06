@@ -8,17 +8,19 @@ export default function Main() {
     let [age, setAge] = useState('');
     let [city, setCity] = useState('');
     let [phone, setPhone] = useState('');
-    let [userInfo, setUserInfo] = useState([]);
+    let [userInfo, setUserInfo] = useState(JSON.parse(localStorage.getItem('item')) || []);
     let [userDetail, setUserDetail] = useState(null);
-    let [item, setItem] = useState(JSON.parse(localStorage.getItem('item')));
 
     useEffect(() => {
-        localStorage.setItem('item', JSON.stringify(item))
+        localStorage.setItem('item', JSON.stringify(userInfo))
     })
     const addInfo = (ev) => {
         ev.preventDefault();
-        setUserInfo([...userInfo, {name, surname, age, city, phone}])
-        console.log(userInfo)
+        if (name !== '' && phone !== '') {
+            setUserInfo([...userInfo, {name, id: Date.now(), surname, age, city, phone}])
+        } else {
+            alert('Enter a name and phone')
+        }
     }
     const nameAdd = (ev) => {
         setName(name = ev.target.value)
@@ -35,14 +37,17 @@ export default function Main() {
     const phoneAdd = (ev) => {
         setPhone(phone = ev.target.value)
     }
-
-    const details = (name) => {
-        let findUser = userInfo.find(value => value.name === name);
+    const delItem = (id) => {
+        setUserInfo(userInfo.filter(value => value.id !== id))
+    }
+    const details = (id) => {
+        let findUser = userInfo.find(value => value.id === id);
         console.log(findUser);
         setUserDetail(findUser);
     }
-
-
+    const closeInfo = () => {
+        setUserDetail('')
+    }
     return (
         <div className={'mainContainer'}>
             <div className={'formForm'}>
@@ -59,36 +64,38 @@ export default function Main() {
                     <input onChange={cityAdd} className={'inputContainer'} type="text"
                            placeholder={'City'}
                     />
-                    <input onChange={phoneAdd} className={'inputContainer'} type="text"
+                    <input defaultValue={'+380'} onChange={phoneAdd} className={'inputContainer'} type="text"
                            placeholder={'Phone (+380)'}
                     />
+                    <button onClick={addInfo} className={'addInput'}>Add</button>
                 </form>
-                <button onClick={addInfo} className={'addInput'}>Add</button>
             </div>
-
             <div className={'infoForm'}>
                 {
-                    userDetail ? (<h4>name : {userDetail.name} <br/> surname : {userDetail.surname}<br/>
-                            age : {userDetail.age}<br/> city : {userDetail.city}<br/> phone: {userDetail.phone}</h4>)
-                        : (<span> </span>)
+                    userDetail ? (
+                        <div>
+                            <h4>name : {userDetail.name} <br/>
+                                surname : {userDetail.surname}<br/>
+                                age : {userDetail.age}<br/>
+                                city : {userDetail.city}<br/>
+                                phone: {userDetail.phone}</h4>
+                            <button onClick={closeInfo}>Close Information</button>
+                        </div>
+                    ) : (<span>User is not defined</span>)
                 }
-                <button id={'btn'}>Close Information</button>
-
             </div>
-
             <div className={'infoUser'}>
                 {
                     userInfo.map((value, index) =>
                         <User
                             key={index}
                             details={details}
+                            delItem={delItem}
                             {...value}
                         />
                     )
                 }
             </div>
-
-
         </div>
     );
 }

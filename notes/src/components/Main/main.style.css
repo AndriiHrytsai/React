@@ -1,3 +1,4 @@
+
 .mainContainer {
     margin-top: 30px;
     display: flex;
@@ -10,6 +11,9 @@
 .infoForm {
     width: 33%;
     text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .infoUser {
@@ -19,14 +23,23 @@
 .formContainer {
     display: flex;
     flex-direction: column;
+    padding-left: 10px;
 }
 
 .inputContainer {
     height: 50px;
     border-radius: 10px;
+    background: bisque;
 }
 
 .addInput {
     width: 100px;
     border-radius: 10px;
+    background: #57e757;
+}
+.deleteItem{
+    background: #ea4646;
+}
+.detailsItem{
+    background: silver;
 }

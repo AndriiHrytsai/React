@@ -1,4 +1,9 @@
 .userContainer{
     background: steelblue;
-    /*border: 1px solid red;*/
+}
+.infoContainer{
+    border: 1px solid black;
+    margin: 5px;
+    border-radius: 10px;
+    background: bisque;
 }
