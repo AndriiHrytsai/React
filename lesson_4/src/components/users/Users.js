@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import {getUsers} from '../../services/services'
 import User from "../user/User";
 
-export default function Users() {
+export default function Users({url}) {
     let [users, setUsers] = useState([])
     useEffect(() => {
         getUsers().then(value => setUsers([...value.data]))
@@ -15,6 +15,7 @@ export default function Users() {
                     <User
                         key={value.id}
                         {...value}
+                        url = {url}
                     />)
             }
         </div>

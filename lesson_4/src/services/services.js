@@ -6,14 +6,18 @@ let options = {
 let axiosInstance = axios.create(options);
 
 const getUsers = () => {
-    console.log('getUsers');
     return axiosInstance.get('/characters'); // promise
+};
+const getUsersID = (id) => {
+    return axiosInstance.get('/characters/' + id); // promise
 };
 
 const getInventar = () => {
-    console.log('getUsers');
     return axiosInstance.get('/inventory'); // promise
 };
+const getInventarID = (id) => {
+    return axiosInstance.get('/inventory/' + id)
+}
 export {
-    getUsers, getInventar, axiosInstance
+    getUsers, getInventar, axiosInstance, getInventarID, getUsersID
 }

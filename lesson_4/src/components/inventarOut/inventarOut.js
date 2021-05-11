@@ -1,5 +1,4 @@
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-import InventoryDetails from "../inventoryDetails/InventoryDetails";
 
 export default function InventarOut(props) {
     let {title, category, id, url} = props;
@@ -7,7 +6,7 @@ export default function InventarOut(props) {
 
         <div>
             <p>{title} --- {category}</p>
-            <Link to={url + '/' + id}>user {id} details</Link>
+            <Link to={url + '/' + id}>inventory {id} details</Link>
         </div>
     )
 }
