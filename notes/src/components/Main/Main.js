@@ -85,6 +85,11 @@ export default function Main() {
                 }
             </div>
             <div className={'infoUser'}>
+
+                {/*<input type="text"*/}
+                {/*       placeholder={'Search'}*/}
+                {/*/>*/}
+                {/*<button>Search</button>*/}
                 {
                     userInfo.map((value, index) =>
                         <User
