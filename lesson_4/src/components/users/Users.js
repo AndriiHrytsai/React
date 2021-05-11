@@ -7,15 +7,15 @@ export default function Users() {
     useEffect(() => {
         getUsers().then(value => setUsers([...value.data]))
     }, [])
-   let userInfo =  users.filter(value => value.id < 5);
+    let userInfo = users.filter(value => value.id < 5);
     return (
         <div>
             {
                 userInfo.map(value =>
                     <User
-                    key={value.id}
-                    {...value}
-                />)
+                        key={value.id}
+                        {...value}
+                    />)
             }
         </div>
     )
