@@ -13,8 +13,7 @@ export default function InventoryDetails({item}) {
             {
                 invet && <div>
                     <InventoryDetailsComponents
-                        invet={invet}
-                    />
+                        invet={invet}/>
                 </div>
             }
         </div>
