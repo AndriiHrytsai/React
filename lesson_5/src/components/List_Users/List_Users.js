@@ -14,6 +14,7 @@ export default function ListUsers() {
     useEffect(() => {
         getUsers(nextPage).then(value => setUsers([...value.data.data]))
     }, [nextPage])
+    console.log(users)
     return (
         <div>
             {
