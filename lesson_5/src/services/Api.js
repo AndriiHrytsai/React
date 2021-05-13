@@ -11,4 +11,8 @@ const getUsers = (page) => {
 const getUserID = (id) => {
     return axiosInstance.get("/users/" + id)
 }
-export {getUsers, getUserID}
+export {
+    getUsers,
+    getUserID,
+    axiosInstance
+}
