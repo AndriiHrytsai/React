@@ -11,7 +11,7 @@ function App() {
             <Router>
                 <Link to={link}>Users</Link>
                 <Switch>
-                    <Route exact path={link} render={() => <ListUsers/>}/>
+                    <Route exact path={link} render={(props) => <ListUsers {...props} />}/>
                     <Route path={'/users/:id'} render={(props) => <UserDetails item={props}/>}/>
                 </Switch>
                 <br/>
