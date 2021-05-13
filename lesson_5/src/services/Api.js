@@ -6,6 +6,9 @@ let option = {
 let axiosInstance = axios.create(option);
 
 const getUsers = (page) => {
-    return axiosInstance.get("/users?page=" + page)
+    return axiosInstance.get("/users" + page)
 }
-export {getUsers}
+const getUserID = (id) => {
+    return axiosInstance.get("/users/" + id)
+}
+export {getUsers, getUserID}
