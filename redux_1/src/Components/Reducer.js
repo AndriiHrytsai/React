@@ -4,38 +4,37 @@ const initialState = {
     counter: 0
 }
 const reducer = (state = initialState, action) => {
-    if (action.type === "INC") {
-        return {
-            ...state,
-            counter: state.counter + 1
+    switch (action.type) {
+        case "INC":
+            return {
+                ...state,
+                counter: state.counter + 1
+            }
+        case "DEC":
+            return {
+                ...state,
+                counter: state.counter - 1
+            }
+        case "INC100":
+            return {
+                ...state,
+                counter: state.counter + 100
+            }
+        case "DEC100":
+            return {
+                ...state,
+                counter: state.counter - 100
+            }
+        case "RESET":
+            return {
+                ...state,
+                counter: 0
+            }
+        default :{
+            return state
         }
     }
-    if (action.type === "RESET") {
-        return {
-            ...state,
-            counter: 0,
-        }
-    }
-    if (action.type === "INC100") {
-        return {
-            ...state,
-            counter: state.counter + 100
-        }
-    }
-    if (action.type === "DEC") {
-        return {
-            ...state,
-            counter: state.counter - 1
-        }
-    }
-    if (action.type === "DEC100") {
-        return {
-            ...state,
-            counter: state.counter - 100
-        }
-    } else {
-        return state
-    }
+
 }
 const store = createStore(reducer)
 
